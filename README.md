@@ -26,7 +26,7 @@ The **Find** Package contains the following Algorithms:
 
     int index = binarySearch.index(value) // No need to pass value if already set, if not set and and not passed, default is 0
     ```
-  * For Recursive11, Use:
+  * For Recursive, Use:
 
     ```java
     BinarySearch.search(array,value);
