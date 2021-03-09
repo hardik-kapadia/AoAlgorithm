@@ -68,7 +68,7 @@ public class Merge {
 
     }
 
-    private static int[] sortArrayS(int[] arr) { // , int l, int r) {
+    private static int[] sortArrayS(int[] arr) {
 
 
         int l1 = 0;
@@ -92,24 +92,21 @@ public class Merge {
             System.out.println("arr1 b4: " + Arrays.toString(arr1T));
             System.out.println("arr2 b4: " + Arrays.toString(arr2T));
 
-            int[] arr1 = sortArrayS(arr1T); // , l1, mid1);
+            int[] arr1 = sortArrayS(arr1T);
 
             System.out.println("Finished with the first one, now for the second");
             System.out.println("arr2 after arr1: " + Arrays.toString(arr2T));
 
-            int[] arr2 = sortArrayS(arr2T); // , mid1 + 1, r1);
+            int[] arr2 = sortArrayS(arr2T); 
 
             System.out.println("arr1 after: " + Arrays.toString(arr1));
             System.out.println("arr2 after: " + Arrays.toString(arr2));
 
             int[] arr3 = merger(arr1, arr2, l1, mid1, r1);
-            // System.out.println("Merged = ");
             return arr3;
-        } else {
+        } else 
             return arr;
-        }
-
-        // return null;
+        
 
     }
 
