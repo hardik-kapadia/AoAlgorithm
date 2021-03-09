@@ -12,7 +12,37 @@ public class BinarySearch {
         this.value = value;
     }
 
+    public BinarySearch(int[] arr) {
+        this.arr = arr;
+        this.value = 0;
+    }
+
     public int index() {
+
+        int lb = 0, ub = arr.length - 1;
+        int mid;
+
+        while (lb <= ub) {
+            mid = (lb + ub) / 2;
+            if (arr[mid] == value) {
+                return mid;
+            } else if (value > arr[mid]) {
+                lb = mid + 1;
+            } else {
+                ub = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    private void setValue(int value) {
+        this.value = value;
+    }
+
+    public int index(int value) {
+
+        this.setValue(value);
 
         int lb = 0, ub = arr.length - 1;
         int mid;

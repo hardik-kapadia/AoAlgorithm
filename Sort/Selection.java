@@ -2,7 +2,7 @@ package Sort;
 
 import java.util.Scanner;
 
-public class Sort {
+public class Selection {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -21,15 +21,7 @@ public class Sort {
             System.out.print("\t " + dat);
         }
 
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = i + 1; j < data.length; j++) {
-                if (data[j] < data[i]) {
-                    int temp = data[j];
-                    data[j] = data[i];
-                    data[i] = temp;
-                }
-            }
-        }
+        sort(data);
 
         System.out.println("\n\n------------");
 
@@ -41,5 +33,17 @@ public class Sort {
 
         sc.close();
 
+    }
+
+    public static void sort(int[] data) {
+        for (int i = 0; i < data.length - 1; i++) {
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[i]) {
+                    int temp = data[j];
+                    data[j] = data[i];
+                    data[i] = temp;
+                }
+            }
+        }
     }
 }

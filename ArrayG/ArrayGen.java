@@ -1,4 +1,4 @@
-package Arrays;
+package ArrayG;
 
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public class ArrayGen {
         return array;
     }
 
-    static boolean contains(int[] arr, int val) {
+    private static boolean contains(int[] arr, int val) {
         for (int i : arr) {
             if (i == val)
                 return true;
