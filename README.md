@@ -1,7 +1,7 @@
 # Algorithm-AoA
 
 ### Implementation of some basic Algorithms in java.
-
+<br />
 
 The **Sort** Package contains the following Alogorithms:
 
@@ -13,8 +13,7 @@ The **Sort** Package contains the following Alogorithms:
   * Use `Merge.sorted(arr)` to recieve a sorted array
 * A Simple Selection Sort
   * Use `Selection.sort(arr)`
-
-
+<br />
 
 The **Find** Package contains the following Algorithms:
 
