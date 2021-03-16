@@ -8,9 +8,60 @@ import Utils.GraphGen;
 
 public class Dijkstra {
 
+    class ShortestPath {
+
+        final int V;
+        private List<Integer>[] paths;
+        private int[] map;
+
+        // Constructors
+        ShortestPath(int V) {
+            this.V = V;
+        }
+
+        ShortestPath(int V, List<Integer>[] paths, int[] map) {
+            this.V = V;
+            this.paths = paths;
+            this.map = map;
+        }
+
+        // individual nodes
+        public int getDistance(int j) {
+            return map[j];
+        }
+
+        public List<Integer> getPath(int j) {
+            return paths[j];
+        }
+
+        // paths
+        void setPaths(List<Integer>[] paths) {
+            this.paths = paths;
+        }
+
+        public List<Integer>[] getPaths() {
+            return this.paths;
+        }
+
+        // maps
+        void setMap(int[] map) {
+            this.map = map;
+        }
+
+        public void print() {
+
+            System.out.println("\n\nVertex \t\t Distance from Source");
+
+            for (int i = 0; i < V; i++)
+                System.out.println(i + " \t\t " + map[i] + " through\t" + paths[i].toString());
+        }
+
+        public int[] getMap() {
+            return this.map;
+        }
+    }
+
     final int V;
-    List<Integer>[] paths;
-    int[] solution;
     int[][] graph;
 
     Dijkstra(int[][] graph) {
@@ -18,16 +69,9 @@ public class Dijkstra {
         this.graph = graph;
         this.V = graph.length;
 
-        this.paths = new ArrayList[V];
-        for (int i = 0; i < V; i++) {
-            this.paths[i] = new ArrayList<>();
-        }
-
-        this.solution = new int[V];
-
     }
 
-    int closestNode(int dist[], Boolean sptSet[]) {
+    private int closestNode(int dist[], Boolean sptSet[]) {
 
         int min = Integer.MAX_VALUE, min_index = -1;
 
@@ -40,25 +84,14 @@ public class Dijkstra {
         return min_index;
     }
 
-    public int getDistance(int j) {
-        return solution[j];
-    }
+    public ShortestPath computeFor(int src) {
 
-    public List<Integer> getPath(int j) {
-        return paths[j];
-    }
-
-    void printMap() {
-
-        System.out.println("\n\nVertex \t\t Distance from Source");
-
-        for (int i = 0; i < V; i++)
-            System.out.println(i + " \t\t " + solution[i] + " through\t" + paths[i].toString());
-    }
-
-    void compute(int src) {
+        ShortestPath shortestPath = new ShortestPath(V);
 
         int dist[] = new int[V];
+
+        List<Integer>[] paths = new ArrayList[V];
+        Arrays.fill(paths, new ArrayList<>());
 
         Boolean sptSet[] = new Boolean[V];
 
@@ -72,10 +105,8 @@ public class Dijkstra {
         for (int count = 0; count < V - 1; count++) {
 
             int u = closestNode(dist, sptSet);
-            System.out.println("Processing: " + u);
 
             sptSet[u] = true;
-            System.out.println("Processing Status: " + Arrays.toString(sptSet));
 
             for (int v = 0; v < V; v++)
 
@@ -84,34 +115,32 @@ public class Dijkstra {
                     paths[v] = new ArrayList<>(paths[u]);
                     paths[v].add(u);
                 }
-
-            System.out.println("Dist: " + Arrays.toString(dist));
         }
 
-        this.solution = dist;
+        shortestPath.setMap(dist);
+        shortestPath.setPaths(paths);
+
+        return shortestPath;
     }
 
     public static void main(String[] args) {
 
-        int graph1[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-                { 0, 8, 0, 7, 0, 4, 0, 0, 2 }, { 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-                { 0, 0, 4, 14, 10, 0, 2, 0, 0 }, { 0, 0, 0, 0, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-                { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-
         int[][] graph2 = new int[][] { { 0, 3, 4, 0, 0, 2 }, { 3, 0, 4, 0, 1, 0 }, { 0, 4, 0, 2, 5, 0 },
                 { 0, 0, 2, 0, 5, 0 }, { 0, 1, 5, 5, 0, 2 }, { 2, 0, 0, 0, 2, 0 } };
 
-        Dijkstra g1 = new Dijkstra(graph1);
-        g1.compute(2);
+        Dijkstra g2 = getInstance(graph2);
+        Dijkstra.ShortestPath shortestPath = g2.computeFor(3);
 
-        Dijkstra g2 = new Dijkstra(graph2);
-        g2.compute(0);
+        shortestPath.print();
 
     }
 
     public static Dijkstra getInstance(int l, int max) {
-        int[][] graph = GraphGen.getRandomGraph(l, max);
-        return new Dijkstra(graph);
+        return getInstance(GraphGen.getRandomGraph(l, max));
+    }
+
+    public static Dijkstra getInstance(int l) {
+        return getInstance(l, 10);
     }
 
     public static Dijkstra getInstance() {
@@ -123,7 +152,7 @@ public class Dijkstra {
     }
 
     public static Dijkstra getInstance(boolean custom, int n) {
-        if(custom)
+        if (custom)
             return getInstance(GraphGen.generateCustomGraph(n));
         else
             return getInstance();
