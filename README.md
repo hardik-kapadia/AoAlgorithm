@@ -62,7 +62,7 @@ The **PathFinder** Package contains the following Algorithm:
   shortestPath.getPaths(); // returns an array of Lists each containing the path from source to the index's node
   shortestPath.getMap(); // returns an Array containing the shortest distances of each node from the source
   ```
-
+<br/>
 
 The **Utils** Package contains Utility classes like:
 * ArrayGen to generate a random Array
