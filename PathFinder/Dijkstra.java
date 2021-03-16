@@ -5,8 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Dijkstra {
-    // A utility function to find the vertex with minimum distance value,
-    // from the set of vertices not yet included in shortest path tree
+    
     final int V;
     List<Integer>[] paths;
     int[] solution;
@@ -22,9 +21,8 @@ public class Dijkstra {
         this.solution = new int[V];
     }
 
-    // returns the closest vertice to the source
     int minDistance(int dist[], Boolean sptSet[]) {
-        // Initialize min value
+
         int min = Integer.MAX_VALUE, min_index = -1;
 
         for (int v = 0; v < V; v++)
