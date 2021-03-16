@@ -2,6 +2,8 @@ package Sort;
 
 import java.util.Arrays;
 
+import Utils.ArrayGen;
+
 public class Insertion {
     public static void sort(int[] arr) {
 
@@ -25,7 +27,7 @@ public class Insertion {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 10, 20, 40, 25, 7, 13 };
+        int[] arr = ArrayGen.generateArray(10, 20, false);
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }

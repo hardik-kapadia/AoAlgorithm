@@ -2,7 +2,7 @@ package Sort;
 
 import java.util.Arrays;
 
-import ArrayG.ArrayGen;
+import Utils.ArrayGen;
 
 public class Merge {
 

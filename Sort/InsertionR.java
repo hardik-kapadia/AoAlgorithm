@@ -2,6 +2,8 @@ package Sort;
 
 import java.util.Arrays;
 
+import Utils.ArrayGen;
+
 public class InsertionR {
 
     public static int sort(int[] arr, int index, int value) {
@@ -32,7 +34,7 @@ public class InsertionR {
 
     public static void main(String[] args) {
 
-        int[] arr = { 10, 20, 40, 25, 7, 13 };
+        int[] arr = ArrayGen.generateArray(10, 20, false);
 
         System.out.println("Before sorting (with recursion): " + Arrays.toString(arr));
         start(arr);

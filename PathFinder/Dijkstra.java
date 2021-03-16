@@ -4,24 +4,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Utils.GraphGen;
+
 public class Dijkstra {
-    
+
     final int V;
     List<Integer>[] paths;
     int[] solution;
     int[][] graph;
 
     Dijkstra(int[][] graph) {
+
         this.graph = graph;
         this.V = graph.length;
+
         this.paths = new ArrayList[V];
         for (int i = 0; i < V; i++) {
             this.paths[i] = new ArrayList<>();
         }
+
         this.solution = new int[V];
+
     }
 
-    int minDistance(int dist[], Boolean sptSet[]) {
+    int closestNode(int dist[], Boolean sptSet[]) {
 
         int min = Integer.MAX_VALUE, min_index = -1;
 
@@ -38,13 +44,19 @@ public class Dijkstra {
         return solution[j];
     }
 
-    void printSolution(int dist[]) {
-        System.out.println("\n\nVertex \t\t Distance from Source");
-        for (int i = 0; i < V; i++)
-            System.out.println(i + " \t\t " + dist[i] + " through\t" + paths[i].toString());
+    public List<Integer> getPath(int j) {
+        return paths[j];
     }
 
-    void dijkstra(int src) {
+    void printMap() {
+
+        System.out.println("\n\nVertex \t\t Distance from Source");
+
+        for (int i = 0; i < V; i++)
+            System.out.println(i + " \t\t " + solution[i] + " through\t" + paths[i].toString());
+    }
+
+    void compute(int src) {
 
         int dist[] = new int[V];
 
@@ -57,10 +69,9 @@ public class Dijkstra {
 
         dist[src] = 0;
 
-        // Find shortest path for all vertices
         for (int count = 0; count < V - 1; count++) {
 
-            int u = minDistance(dist, sptSet);
+            int u = closestNode(dist, sptSet);
             System.out.println("Processing: " + u);
 
             sptSet[u] = true;
@@ -78,10 +89,10 @@ public class Dijkstra {
         }
 
         this.solution = dist;
-        printSolution(dist);
     }
 
     public static void main(String[] args) {
+
         int graph1[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
                 { 0, 8, 0, 7, 0, 4, 0, 0, 2 }, { 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
                 { 0, 0, 4, 14, 10, 0, 2, 0, 0 }, { 0, 0, 0, 0, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
@@ -91,10 +102,34 @@ public class Dijkstra {
                 { 0, 0, 2, 0, 5, 0 }, { 0, 1, 5, 5, 0, 2 }, { 2, 0, 0, 0, 2, 0 } };
 
         Dijkstra g1 = new Dijkstra(graph1);
-        g1.dijkstra(2);
+        g1.compute(2);
 
         Dijkstra g2 = new Dijkstra(graph2);
-        g2.dijkstra(0);
+        g2.compute(0);
 
+    }
+
+    public static Dijkstra getInstance(int l, int max) {
+        int[][] graph = GraphGen.getRandomGraph(l, max);
+        return new Dijkstra(graph);
+    }
+
+    public static Dijkstra getInstance() {
+        return getInstance(6, 10);
+    }
+
+    public static Dijkstra getInstance(boolean custom) {
+        return getInstance(GraphGen.generateCustomGraph());
+    }
+
+    public static Dijkstra getInstance(boolean custom, int n) {
+        if(custom)
+            return getInstance(GraphGen.generateCustomGraph(n));
+        else
+            return getInstance();
+    }
+
+    public static Dijkstra getInstance(int[][] graph) {
+        return new Dijkstra(graph);
     }
 }
