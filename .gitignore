@@ -23,7 +23,6 @@
 hs_err_pid*
 
 #for vscode
-
 *.vscode
 
 #Main files
