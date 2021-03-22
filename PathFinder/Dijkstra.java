@@ -8,6 +8,7 @@ import Utils.GraphGen;
 
 public class Dijkstra {
 
+    // Inner Class to store the Shortest Path for each source node
     class ShortestPath {
 
         final int V;
@@ -64,7 +65,7 @@ public class Dijkstra {
     final int V;
     int[][] graph;
 
-    Dijkstra(int[][] graph) {
+    public Dijkstra(int[][] graph) {
 
         this.graph = graph;
         this.V = graph.length;
@@ -82,6 +83,13 @@ public class Dijkstra {
             }
 
         return min_index;
+    }
+
+    public int computeFor(int src, int dest) {
+
+        ShortestPath shortestPath = computeFor(src);
+        return shortestPath.getDistance(dest);
+
     }
 
     public ShortestPath computeFor(int src) {
@@ -130,6 +138,8 @@ public class Dijkstra {
 
         Dijkstra g2 = getInstance(graph2);
         Dijkstra.ShortestPath shortestPath = g2.computeFor(3);
+
+        Dijkstra g1 = getInstance();
 
         shortestPath.print();
 

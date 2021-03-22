@@ -16,7 +16,7 @@ public class Merge {
 
     private static void sortArray(int[] arr, int l, int r) {
 
-        System.out.println("Rcvd array: " + Arrays.toString(arr) + " from " + l + " to " + r);
+        // System.out.println("Rcvd array: " + Arrays.toString(arr) + " from " + l + " to " + r);
 
         if (l < r) {
 
@@ -89,18 +89,18 @@ public class Merge {
             int[] arr1T = Arrays.copyOfRange(arr, l1, mid1);
             int[] arr2T = Arrays.copyOfRange(arr, mid1, r1 + 1);
 
-            System.out.println("arr1 b4: " + Arrays.toString(arr1T));
-            System.out.println("arr2 b4: " + Arrays.toString(arr2T));
+            // System.out.println("arr1 b4: " + Arrays.toString(arr1T));
+            // System.out.println("arr2 b4: " + Arrays.toString(arr2T));
 
             int[] arr1 = sortArrayS(arr1T);
 
-            System.out.println("Finished with the first one, now for the second");
-            System.out.println("arr2 after arr1: " + Arrays.toString(arr2T));
+            // System.out.println("Finished with the first one, now for the second");
+            // System.out.println("arr2 after arr1: " + Arrays.toString(arr2T));
 
             int[] arr2 = sortArrayS(arr2T); 
 
-            System.out.println("arr1 after: " + Arrays.toString(arr1));
-            System.out.println("arr2 after: " + Arrays.toString(arr2));
+            // System.out.println("arr1 after: " + Arrays.toString(arr1));
+            // System.out.println("arr2 after: " + Arrays.toString(arr2));
 
             int[] arr3 = merger(arr1, arr2, l1, mid1, r1);
             return arr3;

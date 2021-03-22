@@ -80,11 +80,17 @@ public class GraphGen {
                     graph[i][j] = 0;
                     graph[i][j] = 0;
                 } else {
-                    int temp = random.nextInt(max) + 1;
-                    graph[j][i] = temp;
-                    graph[i][j] = temp;
+                    if (random.nextDouble() > 0.33) {
+                        int temp = random.nextInt(max) + 1;
+                        graph[j][i] = temp;
+                        graph[i][j] = temp;
+                    }
                 }
             }
+        }
+
+        for (int[] row : graph) {
+            System.out.println(Arrays.toString(row));
         }
 
         return graph;
