@@ -1,4 +1,4 @@
-# Algorithm-AoA
+# AoAlgorithm - Analysis of Algorithm 
 
 ### Implementation of some basic Algorithms in java.
 <br />
