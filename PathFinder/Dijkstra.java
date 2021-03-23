@@ -138,15 +138,15 @@ public class Dijkstra {
 
         Dijkstra g2 = getInstance(graph2);
         Dijkstra.ShortestPath shortestPath = g2.computeFor(3);
+        System.out.println(shortestPath.getPaths());
 
-        Dijkstra g1 = getInstance();
-
-        shortestPath.print();
+        Dijkstra g1 = getInstance(10);
+        g1.computeFor(3, 6);
 
     }
 
     public static Dijkstra getInstance(int l, int max) {
-        return getInstance(GraphGen.getRandomGraph(l, max));
+        return getInstance(GraphGen.generateRandomGraph(l, max));
     }
 
     public static Dijkstra getInstance(int l) {
@@ -158,12 +158,12 @@ public class Dijkstra {
     }
 
     public static Dijkstra getInstance(boolean custom) {
-        return getInstance(GraphGen.generateCustomGraph());
+        return getInstance(GraphGen.getCustomGraph());
     }
 
     public static Dijkstra getInstance(boolean custom, int n) {
         if (custom)
-            return getInstance(GraphGen.generateCustomGraph(n));
+            return getInstance(GraphGen.getCustomGraph(n));
         else
             return getInstance();
     }

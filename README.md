@@ -68,8 +68,10 @@ The **Utils** Package contains Utility classes like:
   * Use `ArrayGen.generate(length, maxValue, sorted)` where sorted is a boolean value
 
 * GraphGen to generate a graph
-  * Use `GraphGen.getRandomGraph(size, maxLength);` to get a random graph
-  * Use `GraphGen.generateCustomGraph(size)` or `GraphGen.generateCustomGraph()` to create a graph in console (size will have to entered manually if not specified)
+  * Use `GraphGen.generateRandomGraph(size, maxLength);` to get a random graph
+  * Use `GraphGen.getCustomGraph(size)` or `GraphGen.getCustomGraph()` to create a graph in console (size will have to entered manually if not specified)
+  * Use `GraphGen.generateRandomUnWeightedGraph(size, maxLength);` to get Random Unweighted Graph
+  * Use `GraphGen.generateUnWeightedCustomGraph(size)` or `GraphGen.generateUnWeightedCustomGraph()` to create an unweighted graph in console (or just use the normal method and enter length 1 for all the connection)
 
 <br />
 <br />

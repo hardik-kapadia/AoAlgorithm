@@ -70,7 +70,6 @@ public class Merge {
 
     private static int[] sortArrayS(int[] arr) {
 
-
         int l1 = 0;
         int r1 = arr.length - 1;
 
@@ -89,18 +88,9 @@ public class Merge {
             int[] arr1T = Arrays.copyOfRange(arr, l1, mid1);
             int[] arr2T = Arrays.copyOfRange(arr, mid1, r1 + 1);
 
-            // System.out.println("arr1 b4: " + Arrays.toString(arr1T));
-            // System.out.println("arr2 b4: " + Arrays.toString(arr2T));
-
             int[] arr1 = sortArrayS(arr1T);
 
-            // System.out.println("Finished with the first one, now for the second");
-            // System.out.println("arr2 after arr1: " + Arrays.toString(arr2T));
-
             int[] arr2 = sortArrayS(arr2T); 
-
-            // System.out.println("arr1 after: " + Arrays.toString(arr1));
-            // System.out.println("arr2 after: " + Arrays.toString(arr2));
 
             int[] arr3 = merger(arr1, arr2, l1, mid1, r1);
             return arr3;
