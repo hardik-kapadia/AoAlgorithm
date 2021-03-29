@@ -74,7 +74,7 @@ The **Problems** Package contains Famous Problems like:
   shortestRoute.getPath(); // Gets the path (excluding the source)
   System.out.println(shortestRoute); // Prints the distance and the route
   // or
-  int distance = TravellingSalesPerson.getShortestRoute(int[][] graph); // returns the distance
+  int distance = TravellingSalesPerson.getShortestPathDistance(int[][] graph); // returns the distance
   ```
 
 <br/>
