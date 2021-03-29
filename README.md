@@ -66,6 +66,16 @@ The **PathFinder** Package contains the following Algorithm:
 The **Problems** Package contains Famous Problems like:
 * Knapsack which solves the Knapsack Problem using the Dynamic Programming Tabular method
   * Use `Knapsack.getMaxValue(values,weights,capacity);` or `Knapsack.getMaxValue(values,weights,capacity,n);` where n is the number of items
+* TravellingSalesPerson which solves the TravellingSalesPerson Problem using dynamic programming recursion method
+  * Use:
+  ```java
+  TravellingSalesPerson.Route shortestRoute = TravellingSalesPerson.getShortestRoute(int[][] graph); // To get distance and path
+  shortestRoute.getDist(); // Fetches the distance
+  shortestRoute.getPath(); // Gets the path (excluding the source)
+  System.out.println(shortestRoute); // Prints the distance and the route
+  // or
+  int distance = TravellingSalesPerson.getShortestRoute(int[][] graph); // returns the distance
+  ```
 
 <br/>
 
