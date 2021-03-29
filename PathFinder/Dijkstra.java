@@ -87,8 +87,7 @@ public class Dijkstra {
 
     public int computeFor(int src, int dest) {
 
-        ShortestPath shortestPath = computeFor(src);
-        return shortestPath.getDistance(dest);
+        return computeFor(src).getDistance(dest);
 
     }
 
