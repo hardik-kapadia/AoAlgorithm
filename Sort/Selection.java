@@ -1,49 +1,36 @@
 package Sort;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Selection {
+
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        int[] data = new int[5];
-
-        System.out.println("Enter 5 elements: ");
-
-        for (int i = 0; i < 5; i++) {
-            data[i] = sc.nextInt();
-        }
-
-        System.out.println("\nBefore Sorting: ");
-
-        for (int dat : data) {
-            System.out.print("\t " + dat);
-        }
-
-        sort(data);
-
-        System.out.println("\n\n------------");
-
-        System.out.println("\nAfter Sorting: ");
-
-        for (int dat : data) {
-            System.out.print("\t " + dat);
-        }
-
-        sc.close();
-
+        int[] x = { 3, 7, 1, 6, 2, 4 };
+        sort(x);
     }
 
-    public static void sort(int[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = i + 1; j < data.length; j++) {
-                if (data[j] < data[i]) {
-                    int temp = data[j];
-                    data[j] = data[i];
-                    data[i] = temp;
+    public static void sort(int[] arr) {
+
+        int min, in;
+
+        for (int i = 0; i < arr.length; i++) {
+            min = arr[i];
+            in = i;
+
+            for (int j = i; j < arr.length; j++) {
+                if (arr[j] < min) {
+                    min = arr[j];
+                    in = j;
                 }
             }
+
+            if (in != i) {
+                int temp = arr[i];
+                arr[i] = arr[in];
+                arr[in] = temp;
+            }
+
         }
     }
+
 }
