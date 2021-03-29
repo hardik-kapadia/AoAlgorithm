@@ -63,6 +63,12 @@ The **PathFinder** Package contains the following Algorithm:
   ```
 <br/>
 
+The **Problems** Package contains Famous Problems like:
+* Knapsack which solves the Knapsack Problem using the Dynamic Programming Tabular method
+  * Use `Knapsack.getMaxValue(values,weights,capacity);` or `Knapsack.getMaxValue(values,weights,capacity,n);` where n is the number of items
+
+<br/>
+
 The **Utils** Package contains Utility classes like:
 * ArrayGen to generate a random Array
   * Use `ArrayGen.generate(length, maxValue, sorted)` where sorted is a boolean value
