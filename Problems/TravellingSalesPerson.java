@@ -1,0 +1,153 @@
+package Problems;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import Math.MinMax;
+import Utils.MyArray;
+
+public class TravellingSalesPerson {
+
+    List<Integer> path = new ArrayList<>();
+
+    public static void main(String[] args) {
+
+        int[][] graph = { { 0, 10, 15, 20 }, { 5, 0, 9, 10 }, { 6, 13, 0, 12 }, { 8, 8, 9, 0 } };
+
+        System.out.println("Empic: " + new TravellingSalesPerson().getShortestPathDistance(graph));
+        int[] nodes = { 0, 1, 2, 3 };
+
+        TravellingSalesPerson tsp = new TravellingSalesPerson();
+        System.out.println("\n\n\n");
+        System.out.println("EHHH: " + tsp.getShortestRoute(graph));
+    }
+
+    public Route getShortestRoute(int[][] graph) {
+
+        int[] nodes = new int[graph.length];
+        for (int i = 0; i < nodes.length; i++)
+            nodes[i] = i;
+        return shortestPath(0, graph, nodes);
+    }
+
+    public int getShortestPathDistance(int[][] graph) {
+
+        int[] nodes = new int[graph.length];
+        for (int i = 0; i < nodes.length; i++)
+            nodes[i] = i;
+        return shortestPathDistance(0, graph, nodes);
+    }
+
+    public int shortestPathDistance(int src, int[][] graph, int[] nodes) {
+
+        System.out.println("\nSrc: " + src + "\tnodes: " + Arrays.toString(nodes));
+
+        if (nodes.length == 1) {
+            System.out.println("From " + src + " to " + nodes[0] + " : " + graph[src][nodes[0]]);
+            return graph[src][nodes[0]];
+        }
+
+        int[] routes = new int[nodes.length - 1];
+
+        int count = 0;
+
+        for (int i = 1; i < nodes.length; i++) {
+
+            if (nodes[i] == src)
+                continue;
+
+            routes[count] = graph[src][nodes[i]]
+                    + shortestPathDistance(nodes[i], graph, MyArray.getRemovedArray(nodes, nodes[i]));
+            count++;
+
+        }
+
+        System.out.println(src + ". " + Arrays.toString(routes));
+
+        return MinMax.getMin(routes);
+    }
+
+    public Route shortestPath(int src, int[][] graph, int[] nodes) {
+
+        System.out.println("\nSrc: " + src + "\tnodes: " + Arrays.toString(nodes));
+
+        if (nodes.length == 1) {
+            System.out.println("From " + src + " to " + nodes[0] + " : " + graph[src][nodes[0]]);
+            return new Route(graph[src][nodes[0]], new ArrayList<Integer>(nodes[0]));
+        }
+
+        int[] routes = new int[nodes.length - 1];
+        Route[] r = new Route[nodes.length - 1];
+
+        int count = 0;
+
+        for (int i = 1; i < nodes.length; i++) {
+
+            if (nodes[i] == src)
+                continue;
+
+            Route temp = shortestPath(nodes[i], graph, MyArray.getRemovedArray(nodes, nodes[i]));
+            temp.addNode(graph[src][nodes[i]], nodes[i]);
+
+            r[count] = temp;
+
+            routes[count] = graph[src][nodes[i]];
+            count++;
+
+        }
+
+        System.out.println(src + ". " + Arrays.toString(routes));
+
+        return getMinRoute(r);
+    }
+
+    static Route getMinRoute(Route[] routes) {
+
+        Route min = new Route(Integer.MAX_VALUE);
+
+        for (Route r : routes)
+
+            if (r.getDist() < min.getDist())
+                min = r;
+
+        return min;
+
+    }
+
+    static class Route {
+
+        private List<Integer> path;
+        private int dist;
+
+        public Route(int dist) {
+            this.dist = dist;
+            this.path = new ArrayList<>();
+        }
+
+        public Route(int dist, List<Integer> path) {
+            this.path = path;
+            this.dist = dist;
+        }
+
+        public List<Integer> getPath() {
+            return path;
+        }
+
+        public int getDist() {
+            return dist;
+        }
+
+        public void addNode(int dist, int node) {
+            this.dist += dist;
+            path.add(0,node);
+        }
+
+        @Override
+        public String toString() {
+            return this.dist + " through " + path;
+        }
+
+    }
+
+}
