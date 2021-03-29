@@ -15,15 +15,11 @@ public class TravellingSalesPerson {
 
         int[][] graph = { { 0, 10, 15, 20 }, { 5, 0, 9, 10 }, { 6, 13, 0, 12 }, { 8, 8, 9, 0 } };
 
-        System.out.println("Empic: " + new TravellingSalesPerson().getShortestPathDistance(graph));
-        int[] nodes = { 0, 1, 2, 3 };
-
-        TravellingSalesPerson tsp = new TravellingSalesPerson();
-        System.out.println("\n\n\n");
-        System.out.println("EHHH: " + tsp.getShortestRoute(graph));
+        TravellingSalesPerson.Route sRoute = TravellingSalesPerson.getShortestRoute(graph);
+        System.out.println(sRoute);
     }
 
-    public Route getShortestRoute(int[][] graph) {
+    public static Route getShortestRoute(int[][] graph) {
 
         int[] nodes = new int[graph.length];
         for (int i = 0; i < nodes.length; i++)
@@ -31,7 +27,7 @@ public class TravellingSalesPerson {
         return shortestPath(0, graph, nodes);
     }
 
-    public int getShortestPathDistance(int[][] graph) {
+    public static int getShortestPathDistance(int[][] graph) {
 
         int[] nodes = new int[graph.length];
         for (int i = 0; i < nodes.length; i++)
@@ -39,7 +35,7 @@ public class TravellingSalesPerson {
         return shortestPathDistance(0, graph, nodes);
     }
 
-    public int shortestPathDistance(int src, int[][] graph, int[] nodes) {
+    private static int shortestPathDistance(int src, int[][] graph, int[] nodes) {
 
         System.out.println("\nSrc: " + src + "\tnodes: " + Arrays.toString(nodes));
 
@@ -68,7 +64,7 @@ public class TravellingSalesPerson {
         return MinMax.getMin(routes);
     }
 
-    public Route shortestPath(int src, int[][] graph, int[] nodes) {
+    private static Route shortestPath(int src, int[][] graph, int[] nodes) {
 
         System.out.println("\nSrc: " + src + "\tnodes: " + Arrays.toString(nodes));
 
@@ -102,7 +98,7 @@ public class TravellingSalesPerson {
         return getMinRoute(r);
     }
 
-    static Route getMinRoute(Route[] routes) {
+    private static Route getMinRoute(Route[] routes) {
 
         Route min = new Route(Integer.MAX_VALUE);
 
@@ -115,7 +111,7 @@ public class TravellingSalesPerson {
 
     }
 
-    static class Route {
+    public static class Route {
 
         private List<Integer> path;
         private int dist;
@@ -140,7 +136,7 @@ public class TravellingSalesPerson {
 
         public void addNode(int dist, int node) {
             this.dist += dist;
-            path.add(0,node);
+            path.add(0, node);
         }
 
         @Override
