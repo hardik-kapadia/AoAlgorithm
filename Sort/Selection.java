@@ -1,7 +1,5 @@
 package Sort;
 
-import java.util.Arrays;
-
 public class Selection {
 
     public static void main(String[] args) {
