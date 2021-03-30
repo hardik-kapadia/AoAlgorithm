@@ -16,8 +16,6 @@ public class Merge {
 
     private static void sortArray(int[] arr, int l, int r) {
 
-        // System.out.println("Rcvd array: " + Arrays.toString(arr) + " from " + l + " to " + r);
-
         if (l < r) {
 
             int mid = l + (r - l) / 2;
@@ -144,6 +142,11 @@ public class Merge {
         int[] x = ArrayGen.generateArray(5, 20, false);
 
         System.out.println("Generated Array: " + Arrays.toString(x));
+
+        int[] y = sorted(x);
+
+        System.out.println("Mid y: " + Arrays.toString(y));
+        System.out.println("Mid x: " + Arrays.toString(x));
 
         sort(x);
 
