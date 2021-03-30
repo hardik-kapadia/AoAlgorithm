@@ -25,7 +25,7 @@ public class FKnapsack {
 
         Arrays.sort(items);
 
-        System.out.println(Arrays.toString(items));
+        // System.out.println(Arrays.toString(items));
 
         // List<Item> addedItems = new ArrayList<>();
 
