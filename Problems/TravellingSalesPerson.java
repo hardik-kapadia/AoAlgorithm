@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Math.MinMax;
+import Utils.GraphGen;
 import Utils.MyArray;
 
 public class TravellingSalesPerson {
@@ -13,9 +14,12 @@ public class TravellingSalesPerson {
 
     public static void main(String[] args) {
 
-        int[][] graph = { { 0, 10, 15, 20 }, { 5, 0, 9, 10 }, { 6, 13, 0, 12 }, { 8, 8, 9, 0 } };
+        // int[][] graph = { { 0, 10, 15, 20 }, { 5, 0, 9, 10 }, { 6, 13, 0, 12 }, { 8, 8, 9, 0 } };
+        int[][] graph1 = GraphGen.generateRandomGraph(5, 25);
 
-        TravellingSalesPerson.Route sRoute = TravellingSalesPerson.getShortestRoute(graph);
+        GraphGen.printGraph(graph1);
+
+        TravellingSalesPerson.Route sRoute = TravellingSalesPerson.getShortestRoute(graph1);
         System.out.println(sRoute);
     }
 

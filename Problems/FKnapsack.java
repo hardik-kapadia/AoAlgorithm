@@ -12,6 +12,10 @@ public class FKnapsack {
 
     }
 
+    public static double getMaxValue(int[] values, int[] weights, int capacity) {
+        return getMaxValue(values, weights, capacity, values.length);
+    }
+
     public static double getMaxValue(int[] values, int[] weights, int capacity, int n) {
 
         Item[] items = new Item[n];
@@ -25,25 +29,17 @@ public class FKnapsack {
 
         Arrays.sort(items);
 
-        // System.out.println(Arrays.toString(items));
-
-        // List<Item> addedItems = new ArrayList<>();
-
         for (Item i : items) {
             if (i.wt + added <= capacity) {
 
                 added += i.wt;
                 cp += i.val;
-                // addedItems.add(i);
 
                 if (added == capacity) {
                     break;
                 }
 
             } else {
-
-                // addedItems.add(i);
-
                 double ratio = (capacity - added) * 1.0 / i.wt;
 
                 cp += i.val * ratio;
