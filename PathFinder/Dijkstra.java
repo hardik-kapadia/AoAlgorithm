@@ -98,6 +98,7 @@ public class Dijkstra {
         int dist[] = new int[V];
 
         List<Integer>[] paths = new ArrayList[V];
+        
         Arrays.fill(paths, new ArrayList<>());
 
         Boolean sptSet[] = new Boolean[V];

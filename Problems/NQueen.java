@@ -21,17 +21,12 @@ public class NQueen {
 
         double b = System.nanoTime() / 1000000.0;
 
-        List<Integer[]> z = getPlaces(n);
-
-        double c = System.nanoTime() / 1000000.0;
-
         System.out.println("\nThere are " + x.size() + " solutios - ");
         for (Integer[] y : x) {
             System.out.println(Arrays.toString(y));
         }
 
         System.out.println("\nIn time: " + (b - a));
-        System.out.println("and...: " + (c - b));
 
         sc.close();
     }
