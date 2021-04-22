@@ -91,6 +91,7 @@ public class Dijkstra {
 
     }
 
+    @SuppressWarnings("unchecked")
     public ShortestPath computeFor(int src) {
 
         ShortestPath shortestPath = new ShortestPath(V);
