@@ -1,6 +1,8 @@
 package Utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,14 +10,14 @@ public class GraphGen {
 
     public static void main(String[] args) {
 
-        int[][] graph = generateRandomGraph(5, 6);
-        int[][] graph2 = getCustomGraph();
+        // int[][] graph = generateRandomGraph(5, 6);
+        // int[][] graph2 = getCustomGraph();
 
         System.out.println("1:");
-        printGraph(graph);
+        // printGraph(graph);
 
         System.out.println("\n2:");
-        printGraph(graph2);
+        // printGraph(graph2);
     }
 
     public static void printGraph(int[][] graph) {
@@ -24,145 +26,275 @@ public class GraphGen {
         }
     }
 
-    public static int[][] getUnWeightedCustomGraph(int n){
-        Scanner scanner = new Scanner(System.in);
+    public static Graph getGraph(int[][] graph) {
+        return new Graph(graph);
+    }
 
-        int[][] graph = new int[n][n];
+    public static int[][] getRandomGraph(int n, int max) {
+
+        int[][] temp = new int[n][n];
 
         for (int i = 0; i < n; i++) {
-            System.out
-                    .println("Enter connections for " + i + "[-1 to break, will overwrite, so don't mention double]: ");
-            while (true) {
-                System.out.print("Node: ");
-                int node = scanner.nextInt();
-                if (node == -1)
-                    break;
+            for (int j = i + 1; j < n; j++) {
+                double huh = Math.random();
 
-                // System.out.print("Length: ");
-                // int length = scanner.nextInt();
-
-                if (node < 0 || node >= n)
-                    continue;
-
-                graph[i][node] = 1;
-                graph[node][i] = 1;
-            }
-
-        }
-        scanner.close();
-        return graph;
-    }
-
-    public static int[][] getUnWeightedCustomGraph() {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter number of nodes: ");
-        int n = scanner.nextInt();
-
-        scanner.close();
-
-        return getUnWeightedCustomGraph(n);
-
-    }
-
-    public static int[][] generateRandomUnWeightedGraph(int l){
-
-        int[][] graph = new int[l][l];
-
-        Random random = new Random();
-
-        for (int i = 0; i < l; i++) {
-            for (int j = 0; j < i; j++) {
-
-                if (i == j) {
-                    graph[i][j] = 0;
-                    graph[i][j] = 0;
-                } else {
-                    if (random.nextDouble() > 0.33) {
-                        // int temp = random.nextInt(max) + 1;
-                        graph[j][i] = 1;
-                        graph[i][j] = 1;
-                    }
+                if (huh > 0.55) {
+                    temp[i][j] = 1;
+                    temp[j][i] = 1;
                 }
             }
+
         }
 
-        for (int[] row : graph) {
-            System.out.println(Arrays.toString(row));
-        }
+        return temp;
 
-        return graph;
-        
     }
 
     public static int[][] getCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
 
-        int[][] graph = new int[n][n];
+        int[][] temp = new int[n][n];
 
-        for (int i = 0; i < n; i++) {
-            System.out
-                    .println("Enter connections for " + i + "[-1 to break, will overwrite, so don't mention double]: ");
+        for (int i = 0; i < temp.length; i++) {
+
+            System.out.println("Enter connections for " + i + ": [-1 breaks, and no need to repeat");
+
             while (true) {
-                System.out.print("Node: ");
-                int node = scanner.nextInt();
-                if (node == -1)
+
+                int c = scanner.nextInt();
+
+                if (c < 0)
                     break;
 
-                System.out.print("Length: ");
-                int length = scanner.nextInt();
+                if (c < n) {
+                    temp[i][c] = 1;
+                    temp[c][i] = 1;
+                }
 
-                if (node < 0 || node >= n || length < 0)
+            }
+        }
+
+        scanner.close();
+
+        return temp;
+    }
+
+    public static int[][] getDirectionalRandomGraph(int n, int max) {
+
+        int[][] temp = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                if (i == j)
                     continue;
 
-                graph[i][node] = length;
-                graph[node][i] = length;
+                double huh = Math.random();
+
+                if (huh > 0.55) {
+                    temp[i][j] = 1;
+                }
             }
 
         }
-        scanner.close();
-        return graph;
+
+        return temp;
+
     }
 
-    public static int[][] getCustomGraph() {
+    public static int[][] getDirectionalCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter number of nodes: ");
-        int n = scanner.nextInt();
+        int[][] temp = new int[n][n];
 
-        scanner.close();
+        for (int i = 0; i < temp.length; i++) {
 
-        return getCustomGraph(n);
+            System.out.println("Enter connections for " + i + ": [-1 breaks]");
 
-    }
+            while (true) {
 
-    public static int[][] generateRandomGraph(int l, int max) {
+                int c = scanner.nextInt();
 
-        int[][] graph = new int[l][l];
+                if (c < 0)
+                    break;
 
-        Random random = new Random();
+                if (c < n)
+                    temp[i][c] = 1;
 
-        for (int i = 0; i < l; i++) {
-            for (int j = 0; j < i; j++) {
-
-                if (i == j) {
-                    graph[i][j] = 0;
-                    graph[i][j] = 0;
-                } else {
-                    if (random.nextDouble() > 0.33) {
-                        int temp = random.nextInt(max) + 1;
-                        graph[j][i] = temp;
-                        graph[i][j] = temp;
-                    }
-                }
             }
         }
 
+        scanner.close();
 
-        return graph;
+        return temp;
+    }
+
+    public static int[][] getWeightedRandomGraph(int n, int max) {
+
+        int[][] temp = new int[n][n];
+
+        Random r = new Random();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                double toAdd = r.nextDouble();
+
+                if (toAdd > 0.55) {
+
+                    int rNode = r.nextInt(max);
+
+                    temp[i][j] = rNode;
+                    temp[j][i] = rNode;
+                }
+            }
+
+        }
+
+        return temp;
+
+    }
+
+    public static int[][] getWeightedCustomGraph(int n) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int[][] temp = new int[n][n];
+
+        for (int i = 0; i < temp.length; i++) {
+
+            System.out.println("Enter connections for " + i + ": [-1 breaks, and no need to repeat");
+
+            while (true) {
+                System.out.print("Node: ");
+                int c = scanner.nextInt();
+
+                if (c < 0)
+                    break;
+
+                if (c < n) {
+
+                    System.out.print("Weight: ");
+                    int w = scanner.nextInt();
+                    temp[i][c] = w;
+                    temp[c][i] = w;
+                }
+
+            }
+        }
+
+        scanner.close();
+
+        return temp;
+    }
+
+    public static int[][] getWeightedDirectionalRandomGraph(int n, int max) {
+
+        int[][] temp = new int[n][n];
+
+        Random r = new Random();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                if (i == j)
+                    continue;
+
+                if (r.nextDouble() > 0.55)
+                    temp[i][j] = r.nextInt(max);
+
+            }
+
+        }
+
+        return temp;
+
+    }
+
+    public static int[][] getWeightedDirectionalCustomGraph(int n) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int[][] temp = new int[n][n];
+
+        for (int i = 0; i < temp.length; i++) {
+
+            System.out.println("Enter connections for " + i + ": [-1 breaks]");
+
+            while (true) {
+                System.out.print("Node: ");
+                int c = scanner.nextInt();
+
+                if (c < 0)
+                    break;
+
+                if (c < n) {
+
+                    System.out.print("Weight: ");
+                    int w = scanner.nextInt();
+                    temp[i][c] = w;
+                }
+
+            }
+        }
+
+        scanner.close();
+
+        return temp;
+    }
+
+}
+
+class Graph {
+
+    final int V;
+    List<Integer>[] connectivity;
+
+    public Graph(int[][] nodes) {
+        this(nodes, nodes.length);
+    }
+
+    @SuppressWarnings("unchecked")
+    public Graph(int[][] nodes, int V) {
+        this.V = V;
+
+        this.connectivity = new List[V];
+
+        for (int i = 0; i < V; i++)
+            this.connectivity[i] = new ArrayList<>();
+
+    }
+
+    public void addEdge(int u, int v) {
+        this.connectivity[u].add(v);
+        this.connectivity[v].add(u);
+    }
+
+    public Graph(int V) {
+        this(new int[V][V], V);
+    }
+
+}
+
+class DirectionalGraph extends Graph {
+
+    public DirectionalGraph(int[][] nodes) {
+        super(nodes, nodes.length);
+    }
+
+    public DirectionalGraph(int[][] nodes, int V) {
+        super(nodes, V);
+
+    }
+
+    public DirectionalGraph(int V) {
+        super(V);
+    }
+
+    @Override
+    public void addEdge(int u, int v) {
+        this.connectivity[u].add(v);
     }
 
 }
