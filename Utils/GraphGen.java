@@ -124,7 +124,7 @@ public class GraphGen {
         return temp;
     }
 
-    // Returns a Random weighted Non-Directional Graph
+    // Returns a Random Weighted Non-Directional Graph
     public static int[][] getWeightedRandomGraph(int n, int max) {
 
         int[][] temp = new int[n][n];

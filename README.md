@@ -84,16 +84,20 @@ The **Utils** Package contains Utility classes like:
   * Use `ArrayGen.generate(length, maxValue, sorted)` where sorted is a boolean value
 
 * GraphGen to generate a graph
-  * Use `GraphGen.generateRandomGraph(size, maxLength);` to get a random graph
-  * Use `GraphGen.getCustomGraph(size)` or `GraphGen.getCustomGraph()` to create a graph in console (size will have to entered manually if not specified)
-  * Use `GraphGen.generateRandomUnWeightedGraph(size, maxLength);` to get Random Unweighted Graph
-  * Use `GraphGen.generateUnWeightedCustomGraph(size)` or `GraphGen.generateUnWeightedCustomGraph()` to create an unweighted graph in console (or just use the normal method and enter length 1 for all the connection)
+  * Use `GraphGen.getRandomGraph(size, maxLength);` to get a Random Unweighted Non-Directional Graph
+  * Use `GraphGen.getCustomGraph(size);` to get a Custom Unweighted Non-Directional Graph
+  * Use `GraphGen.getDirectionalRandomGraph(size,maxLength)` for Random Unweighted Directional Graph
+  * Use `GraphGen.getDirectionalCustomGraph(size)` for Custom Unweighted Directional Graph
+  * Use `GraphGen.getWeightedRandomGraph(size,maxLength)` for Random Weighted Non-Directional Graph
+  * Use `GraphGen.getWeightedCustomGraph(size)` for Custom Weighted Non-Directional Graph
+  * Use `GraphGen.getWeightedDirectionalRandomGraph(size,maxLength)` - go figure
+  * Use `GraphGen.getWeightedDirectionalCustomGraph(size)` - go figure
 
+* and a few miscellanous classes
 <br />
 <br />
 
 Various new Algorithms have been added but README is not updated, will update soon
-
 <br />
 <br />
 More to come
