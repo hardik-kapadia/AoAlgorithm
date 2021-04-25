@@ -8,18 +8,6 @@ import java.util.Scanner;
 
 public class GraphGen {
 
-    public static void main(String[] args) {
-
-        // int[][] graph = generateRandomGraph(5, 6);
-        // int[][] graph2 = getCustomGraph();
-
-        System.out.println("1:");
-        // printGraph(graph);
-
-        System.out.println("\n2:");
-        // printGraph(graph2);
-    }
-
     public static void printGraph(int[][] graph) {
         for (int i = 0; i < graph.length; i++) {
             System.out.println(Arrays.toString(graph[i]));
@@ -30,6 +18,8 @@ public class GraphGen {
         return new Graph(graph);
     }
 
+
+    // Returns a Random Unweighted Non-Directional Graph
     public static int[][] getRandomGraph(int n, int max) {
 
         int[][] temp = new int[n][n];
@@ -50,6 +40,7 @@ public class GraphGen {
 
     }
 
+    // Returns a Custom Unweighted Non-Directional Graph
     public static int[][] getCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
@@ -80,6 +71,7 @@ public class GraphGen {
         return temp;
     }
 
+    // Returns a Random Unweighted Directional Graph
     public static int[][] getDirectionalRandomGraph(int n, int max) {
 
         int[][] temp = new int[n][n];
@@ -103,6 +95,7 @@ public class GraphGen {
 
     }
 
+    // Returns a Custom Unweighted Directional Graph
     public static int[][] getDirectionalCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
@@ -131,6 +124,7 @@ public class GraphGen {
         return temp;
     }
 
+    // Returns a Random weighted Non-Directional Graph
     public static int[][] getWeightedRandomGraph(int n, int max) {
 
         int[][] temp = new int[n][n];
@@ -156,6 +150,7 @@ public class GraphGen {
 
     }
 
+    // Returns a Custom Weighted Non-Directional Graph
     public static int[][] getWeightedCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
@@ -189,6 +184,7 @@ public class GraphGen {
         return temp;
     }
 
+    // Returns a Random Weighted Directional Graph
     public static int[][] getWeightedDirectionalRandomGraph(int n, int max) {
 
         int[][] temp = new int[n][n];
@@ -212,6 +208,7 @@ public class GraphGen {
 
     }
 
+    // Returns a Custom Weighted Directional Graph
     public static int[][] getWeightedDirectionalCustomGraph(int n) {
 
         Scanner scanner = new Scanner(System.in);
