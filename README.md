@@ -91,4 +91,9 @@ The **Utils** Package contains Utility classes like:
 
 <br />
 <br />
+
+Various new Algorithms have been added but README is not updated, will update soon
+
+<br />
+<br />
 More to come
