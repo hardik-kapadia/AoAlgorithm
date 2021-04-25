@@ -134,7 +134,7 @@ public class Dijkstra {
 
     public static void main(String[] args) {
 
-        int[][] graph2 = new int[][] { { 0, 3, 4, 0, 0, 2 }, { 3, 0, 4, 0, 1, 0 }, { 0, 4, 0, 2, 5, 0 },
+        int[][] graph2 = new int[][] { { 0, 3, 4, 0, 0, 2 }, { 3, 0, 4, 0, 1, 0 }, { 4, 4, 0, 2, 5, 0 },
                 { 0, 0, 2, 0, 5, 0 }, { 0, 1, 5, 5, 0, 2 }, { 2, 0, 0, 0, 2, 0 } };
 
         Dijkstra g2 = getInstance(graph2);
@@ -147,7 +147,7 @@ public class Dijkstra {
     }
 
     public static Dijkstra getInstance(int l, int max) {
-        return getInstance(GraphGen.generateRandomGraph(l, max));
+        return getInstance(GraphGen.getWeightedRandomGraph(l, max));
     }
 
     public static Dijkstra getInstance(int l) {
@@ -158,13 +158,9 @@ public class Dijkstra {
         return getInstance(6, 10);
     }
 
-    public static Dijkstra getInstance(boolean custom) {
-        return getInstance(GraphGen.getCustomGraph());
-    }
-
     public static Dijkstra getInstance(boolean custom, int n) {
         if (custom)
-            return getInstance(GraphGen.getCustomGraph(n));
+            return getInstance(GraphGen.getWeightedCustomGraph(n));
         else
             return getInstance();
     }

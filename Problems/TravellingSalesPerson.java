@@ -15,7 +15,7 @@ public class TravellingSalesPerson {
     public static void main(String[] args) {
 
         // int[][] graph = { { 0, 10, 15, 20 }, { 5, 0, 9, 10 }, { 6, 13, 0, 12 }, { 8, 8, 9, 0 } };
-        int[][] graph1 = GraphGen.generateRandomGraph(5, 25);
+        int[][] graph1 = GraphGen.getWeightedRandomGraph(5, 25);
 
         GraphGen.printGraph(graph1);
 
