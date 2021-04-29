@@ -6,9 +6,6 @@ import java.util.Stack;
 
 import Utils.GraphGen;
 
-/**
- * AllPaths
- */
 public class AllPaths {
 
     List<List<Integer>> allPaths;

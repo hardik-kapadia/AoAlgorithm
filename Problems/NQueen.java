@@ -22,6 +22,7 @@ public class NQueen {
         double b = System.nanoTime() / 1000000.0;
 
         System.out.println("\nThere are " + x.size() + " solutios - ");
+
         for (Integer[] y : x) {
             System.out.println(Arrays.toString(y));
         }
@@ -31,7 +32,8 @@ public class NQueen {
         sc.close();
     }
 
-    public static List<Integer[]> getPlaces(int n) {
+
+    public static List<Integer[]> getPlaces(int n) { // Without reversing
 
         if (n <= 0) {
             return new ArrayList<>();
@@ -67,11 +69,6 @@ public class NQueen {
 
                     stack.pop();
 
-                    // r--;
-                    // c = stack.pop();
-
-                    // board[r][c] = 0;
-
                     r--;
                     c = stack.pop() + 1;
 
@@ -98,12 +95,10 @@ public class NQueen {
 
         }
 
-        // finalize(result);
-
         return result;
     }
 
-    public static List<Integer[]> NQueenSol(int n) {
+    public static List<Integer[]> NQueenSol(int n) { // With reversing
 
         if (n <= 0) {
             return new ArrayList<>();
@@ -142,10 +137,6 @@ public class NQueen {
 
                     stack.pop();
 
-                    // r--;
-                    // c = stack.pop();
-
-                    // board[r][c] = 0;
 
                     r--;
                     c = stack.pop() + 1;

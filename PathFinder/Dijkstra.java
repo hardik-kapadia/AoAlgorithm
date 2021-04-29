@@ -51,10 +51,13 @@ public class Dijkstra {
 
         public void print() {
 
-            System.out.println("\n\nVertex \t\t Distance from Source");
+            System.out.println("\n\nVertex \t\t Distance");
 
             for (int i = 0; i < V; i++)
-                System.out.println(i + " \t\t " + map[i] + " through\t" + paths[i].toString());
+                if (map[i] < Integer.MAX_VALUE)
+                    System.out.println(i + " \t\t " + map[i] + " through\t" + paths[i].toString());
+                else
+                    System.out.println(i + " \t\t  No Path ");
         }
 
         public int[] getMap() {
@@ -99,7 +102,7 @@ public class Dijkstra {
         int dist[] = new int[V];
 
         List<Integer>[] paths = new ArrayList[V];
-        
+
         Arrays.fill(paths, new ArrayList<>());
 
         Boolean sptSet[] = new Boolean[V];
@@ -139,7 +142,7 @@ public class Dijkstra {
 
         Dijkstra g2 = getInstance(graph2);
         Dijkstra.ShortestPath shortestPath = g2.computeFor(3);
-        System.out.println(shortestPath.getPaths());
+        shortestPath.print();
 
         Dijkstra g1 = getInstance(10);
         g1.computeFor(3, 6);
@@ -162,7 +165,7 @@ public class Dijkstra {
         if (custom)
             return getInstance(GraphGen.getWeightedCustomGraph(n));
         else
-            return getInstance();
+            return getInstance(n);
     }
 
     public static Dijkstra getInstance(int[][] graph) {
