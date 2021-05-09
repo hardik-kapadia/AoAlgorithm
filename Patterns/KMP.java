@@ -5,6 +5,16 @@ import java.util.List;
 
 public class KMP {
 
+    private String text;
+
+    public KMP(String text) {
+        this.text = text;
+    }
+
+    public List<Integer> getMatches(String pattern) {
+        return KMP.getMatches(text, pattern);
+    }
+
     public static List<Integer> getMatches(String text, String pattern) {
 
         List<Integer> result = new ArrayList<>();
