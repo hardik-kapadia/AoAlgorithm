@@ -25,6 +25,10 @@ public class ArrayGen {
         return array;
     }
 
+    public static int[] generateArray(int len, int max) {
+        return generateArray(len, max, false);
+    }
+
     private static boolean contains(int[] arr, int val) {
         for (int i : arr) {
             if (i == val)

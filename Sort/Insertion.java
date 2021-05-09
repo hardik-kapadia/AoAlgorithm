@@ -7,8 +7,6 @@ import Utils.ArrayGen;
 public class Insertion {
     public static void sort(int[] arr) {
 
-        // System.out.println("Before sorting: " + Arrays.toString(arr));
-
         for (int i = 1; i < arr.length; i++) {
 
             int value = arr[i];
@@ -21,8 +19,6 @@ public class Insertion {
             arr[index] = value;
 
         }
-
-        // System.out.println("After Sorting: " + Arrays.toString(arr));
 
     }
 

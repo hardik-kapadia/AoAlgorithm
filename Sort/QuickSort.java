@@ -2,17 +2,24 @@ package Sort;
 
 public class QuickSort {
     public static void main(String args[]) {
-        System.out.println("yoo");
         int[] a = { 36, 2, 3, 20, 9, 13, 10, 11, 15, 7, 12 };
-        int n = a.length;
-        int low = 0;
-        int high = n - 1;
+        
         for (int i : a)
             System.out.print(i + "  ");
         System.out.println();
-        quickSort(a, low, high);
+        sort(a);
         for (int i : a)
             System.out.print(i + "  ");
+    }
+
+    public static void sort(int[] a) {
+
+        int n = a.length;
+        int low = 0;
+        int high = n - 1;
+
+        quickSort(a, low, high);
+
     }
 
     public static void quickSort(int a[], int low, int high) {

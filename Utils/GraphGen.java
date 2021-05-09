@@ -18,7 +18,6 @@ public class GraphGen {
         return new Graph(graph);
     }
 
-
     // Returns a Random Unweighted Non-Directional Graph
     public static int[][] getRandomGraph(int n, int max) {
 
@@ -197,7 +196,7 @@ public class GraphGen {
                 if (i == j)
                     continue;
 
-                if (r.nextDouble() > 0.55)
+                if (r.nextDouble() > 0.49)
                     temp[i][j] = r.nextInt(max);
 
             }
